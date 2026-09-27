@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+Timeline | Windows Forensics Toolkit
+{% endblock %}
+
+{% block heading %}
+Forensic Timeline
+{% endblock %}
+
+{% block content %}
+
+<div class="case-header">
+
+    <div>
+
+        <span class="case-id">
+            {{ case.case_id }}
+        </span>
+
+        <h2>
+            Filesystem Activity Timeline
+        </h2>
+
+    </div>
+
+</div>
+
+
+<div class="timeline">
+
+{% if events %}
+
+    {% for event in events %}
+
+    <div class="timeline-item">
+
+        <div class="timeline-marker"></div>
+
+        <div class="timeline-content">
+
+            <span class="timeline-time">
+                {{ event.timestamp }}
+            </span>
+
+            <h3>
+                {{ event.event_type }}
+            </h3>
+
+            <p>
+                {{ event.description }}
+            </p>
+
+            <span class="timeline-source">
+                {{ event.source }}
+            </span>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="empty">
+
+        <h3>
+            No timeline events
+        </h3>
+
+        <p>
+            Register evidence and run analysis
+            to generate forensic events.
+        </p>
+
+    </div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

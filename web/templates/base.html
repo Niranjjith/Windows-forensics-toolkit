@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        Windows Forensics Toolkit
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                WF
+            </div>
+
+            <div>
+                <h2>Forensics</h2>
+                <span>Toolkit v2.0</span>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="/" class="nav-item">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="/cases" class="nav-item">
+                <span>▣</span>
+                Cases
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="status-dot"></div>
+
+            System Online
+
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="breadcrumb">
+                    DIGITAL FORENSICS
+                </div>
+
+                <h1>
+                    {% block heading %}
+                    Dashboard
+                    {% endblock %}
+                </h1>
+
+            </div>
+
+            <div class="top-status">
+
+                <span class="status-dot"></span>
+
+                SYSTEM OPERATIONAL
+
+            </div>
+
+        </header>
+
+
+        <section class="content">
+
+            {% block content %}
+            {% endblock %}
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+
+</body>
+
+</html>

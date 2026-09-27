@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard | Windows Forensics Toolkit
+{% endblock %}
+
+{% block heading %}
+Forensic Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="welcome">
+
+    <div>
+
+        <div class="eyebrow">
+            INVESTIGATION CENTER
+        </div>
+
+        <h2>
+            Digital Evidence Command Center
+        </h2>
+
+        <p>
+            Monitor forensic investigations,
+            evidence integrity and filesystem activity.
+        </p>
+
+    </div>
+
+    <a
+        href="/cases/create"
+        class="button primary"
+    >
+        + New Case
+    </a>
+
+</div>
+
+
+<div class="stats">
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            CASE
+        </div>
+
+        <div>
+
+            <span>Active Cases</span>
+
+            <strong>
+                {{ total_cases }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            EVD
+        </div>
+
+        <div>
+
+            <span>Evidence Items</span>
+
+            <strong>
+                {{ total_evidence }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            SHA
+        </div>
+
+        <div>
+
+            <span>Integrity Engine</span>
+
+            <strong>
+                ONLINE
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            SYS
+        </div>
+
+        <div>
+
+            <span>System Status</span>
+
+            <strong>
+                READY
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="section-header">
+
+    <div>
+
+        <div class="eyebrow">
+            INVESTIGATIONS
+        </div>
+
+        <h2>
+            Recent Cases
+        </h2>
+
+    </div>
+
+    <a href="/cases">
+        View All →
+    </a>
+
+</div>
+
+
+<div class="case-grid">
+
+{% if cases %}
+
+    {% for case in cases %}
+
+    <a
+        href="/cases/{{ case.case_id }}"
+        class="case-card"
+    >
+
+        <div class="case-top">
+
+            <span class="case-id">
+                {{ case.case_id }}
+            </span>
+
+            <span class="verified">
+                ACTIVE
+            </span>
+
+        </div>
+
+        <h3>
+            {{ case.name }}
+        </h3>
+
+        <p>
+            {{ case.description or
+            "No description provided." }}
+        </p>
+
+        <div class="case-meta">
+
+            <span>
+                Investigator
+            </span>
+
+            <strong>
+                {{ case.investigator or "-" }}
+            </strong>
+
+        </div>
+
+    </a>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="empty">
+
+        <h3>
+            No investigations yet
+        </h3>
+
+        <p>
+            Create your first forensic case.
+        </p>
+
+        <a
+            href="/cases/create"
+            class="button primary"
+        >
+            Create Case
+        </a>
+
+    </div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

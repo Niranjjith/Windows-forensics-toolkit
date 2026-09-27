@@ -1,0 +1,11 @@
+{
+    ".scr": "Screen saver executable",
+    ".hta": "HTML application",
+    ".vbs": "VBScript",
+    ".vbe": "Encoded VBScript",
+    ".js": "JavaScript",
+    ".jse": "Encoded JavaScript",
+    ".ps1": "PowerShell script",
+    ".bat": "Batch script",
+    ".cmd": "Command script"
+}

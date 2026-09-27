@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cases | Windows Forensics Toolkit
+{% endblock %}
+
+{% block heading %}
+Investigation Cases
+{% endblock %}
+
+{% block content %}
+
+<div class="page-actions">
+
+    <div>
+
+        <div class="eyebrow">
+            CASE MANAGEMENT
+        </div>
+
+        <p>
+            Manage forensic investigations and evidence.
+        </p>
+
+    </div>
+
+    <a
+        href="/cases/create"
+        class="button primary"
+    >
+        + Create Case
+    </a>
+
+</div>
+
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>Case ID</th>
+    <th>Investigation</th>
+    <th>Investigator</th>
+    <th>Created</th>
+    <th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for case in cases %}
+
+<tr>
+
+    <td>
+        <span class="case-id">
+            {{ case.case_id }}
+        </span>
+    </td>
+
+    <td>
+        {{ case.name }}
+    </td>
+
+    <td>
+        {{ case.investigator or "-" }}
+    </td>
+
+    <td>
+        {{ case.created_at }}
+    </td>
+
+    <td>
+
+        <a
+            href="/cases/{{ case.case_id }}"
+            class="small-button"
+        >
+            Open
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+[
+    {
+        "name": "test.txt",
+        "path": "D:\\MyHub\\Personal\\My Projects\\Windows-forensics-toolkit\\evidence\\test.txt",
+        "extension": ".txt",
+        "size": 32,
+        "created": "2026-09-27 18:24:52",
+        "modified": "2026-09-27 18:24:52",
+        "accessed": "2026-09-27 18:24:57",
+        "md5": "1a136fac0743aaf96f124649f71417c7",
+        "sha1": "1f8897e2f9fcbc9aa5fd8b51e4f93b43977a8da7",
+        "sha256": "c53b9d01580a0ba50f1dc99d446eb74837a5625450bd6b4ff3a78660239cfa2a"
+    }
+]

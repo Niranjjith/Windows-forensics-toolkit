@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}
+Evidence | Windows Forensics Toolkit
+{% endblock %}
+
+{% block heading %}
+Evidence Integrity
+{% endblock %}
+
+{% block content %}
+
+<div class="case-header">
+
+    <div>
+
+        <span class="case-id">
+            {{ case.case_id }}
+        </span>
+
+        <h2>
+            {{ case.name }}
+        </h2>
+
+    </div>
+
+    <div class="verified large">
+        INTEGRITY VERIFIED
+    </div>
+
+</div>
+
+
+{% for item in evidence %}
+
+<div class="evidence-card">
+
+    <div class="evidence-title">
+
+        <div>
+
+            <span class="eyebrow">
+                EVIDENCE ITEM
+            </span>
+
+            <h2>
+                {{ item.name }}
+            </h2>
+
+        </div>
+
+        <span class="verified">
+            HASHED
+        </span>
+
+    </div>
+
+
+    <div class="hash-grid">
+
+        <div>
+
+            <span>MD5</span>
+
+            <code>
+                {{ item.md5 }}
+            </code>
+
+        </div>
+
+        <div>
+
+            <span>SHA-1</span>
+
+            <code>
+                {{ item.sha1 }}
+            </code>
+
+        </div>
+
+        <div class="hash-full">
+
+            <span>SHA-256</span>
+
+            <code>
+                {{ item.sha256 }}
+            </code>
+
+        </div>
+
+        <div class="hash-full">
+
+            <span>SHA-512</span>
+
+            <code>
+                {{ item.sha512 }}
+            </code>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

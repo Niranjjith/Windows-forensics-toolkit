@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% block title %}
+Case | Windows Forensics Toolkit
+{% endblock %}
+
+{% block heading %}
+
+{% if case %}
+{{ case.name }}
+{% else %}
+Create New Case
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if not case %}
+
+<div class="form-card">
+
+    <div class="eyebrow">
+        NEW INVESTIGATION
+    </div>
+
+    <h2>
+        Create Forensic Case
+    </h2>
+
+    <form
+        method="POST"
+        action="/cases/create"
+    >
+
+        <label>
+            Case ID
+        </label>
+
+        <input
+            type="text"
+            name="case_id"
+            placeholder="CASE-001"
+            required
+        >
+
+
+        <label>
+            Investigation Name
+        </label>
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Windows Incident Investigation"
+            required
+        >
+
+
+        <label>
+            Investigator
+        </label>
+
+        <input
+            type="text"
+            name="investigator"
+            placeholder="Investigator name"
+        >
+
+
+        <label>
+            Description
+        </label>
+
+        <textarea
+            name="description"
+            rows="5"
+            placeholder="Investigation description"
+        ></textarea>
+
+
+        <button
+            type="submit"
+            class="button primary"
+        >
+            Create Investigation
+        </button>
+
+    </form>
+
+</div>
+
+{% else %}
+
+<div class="case-header">
+
+    <div>
+
+        <span class="case-id">
+            {{ case.case_id }}
+        </span>
+
+        <h2>
+            {{ case.name }}
+        </h2>
+
+        <p>
+            {{ case.description or
+            "No description provided." }}
+        </p>
+
+    </div>
+
+    <div class="verified large">
+        CASE ACTIVE
+    </div>
+
+</div>
+
+
+<div class="stats">
+
+    <div class="stat-card">
+
+        <span>Evidence Items</span>
+
+        <strong>
+            {{ evidence|length }}
+        </strong>
+
+    </div>
+
+    <div class="stat-card">
+
+        <span>Investigator</span>
+
+        <strong>
+            {{ case.investigator or "-" }}
+        </strong>
+
+    </div>
+
+</div>
+
+
+<div class="two-column">
+
+
+<div class="form-card">
+
+    <div class="eyebrow">
+        EVIDENCE ACQUISITION
+    </div>
+
+    <h2>
+        Upload Evidence
+    </h2>
+
+    <form
+        method="POST"
+        action="/cases/{{ case.case_id }}/evidence"
+        enctype="multipart/form-data"
+    >
+
+        <input
+            type="file"
+            name="file"
+            required
+        >
+
+        <button
+            type="submit"
+            class="button primary"
+        >
+            Register Evidence
+        </button>
+
+    </form>
+
+</div>
+
+
+<div class="form-card">
+
+    <div class="eyebrow">
+        FORENSIC MODULES
+    </div>
+
+    <h2>
+        Analysis
+    </h2>
+
+    <div class="module-links">
+
+        <a href="/cases/{{ case.case_id }}/evidence">
+            Evidence Integrity →
+        </a>
+
+        <a href="/cases/{{ case.case_id }}/timeline">
+            Filesystem Timeline →
+        </a>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<div class="section-header">
+
+    <div>
+
+        <div class="eyebrow">
+            DIGITAL EVIDENCE
+        </div>
+
+        <h2>
+            Registered Evidence
+        </h2>
+
+    </div>
+
+</div>
+
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>Evidence ID</th>
+    <th>File</th>
+    <th>Size</th>
+    <th>SHA-256</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for item in evidence %}
+
+<tr>
+
+    <td>
+        {{ item.evidence_id }}
+    </td>
+
+    <td>
+        {{ item.name }}
+    </td>
+
+    <td>
+        {{ "{:,}".format(item.size) }}
+    </td>
+
+    <td class="hash">
+        {{ item.sha256 }}
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

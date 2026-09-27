@@ -1,0 +1,18 @@
+{
+    "suspicious_extensions": [
+        ".scr",
+        ".hta",
+        ".vbs",
+        ".vbe",
+        ".js",
+        ".jse",
+        ".ps1",
+        ".bat",
+        ".cmd"
+    ],
+    "suspicious_filenames": [
+        "payload.exe",
+        "backdoor.exe",
+        "keylogger.exe"
+    ]
+}

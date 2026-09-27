@@ -1,25 +1,22 @@
-# Virtual environment
 venv/
 .venv/
 
-# Python cache
 __pycache__/
 *.py[cod]
 
-# Test cache
 .pytest_cache/
 
-# IDE
 .vscode/
 
-# Generated reports
-reports/*.json
-reports/*.html
+forensics.db
+*.db
+
+reports/generated/*
 reports/*.log
 
-# Evidence
 evidence/*
+cases/*
 
-# OS files
-.DS_Store
-Thumbs.db
+!evidence/.gitkeep
+!cases/.gitkeep
+!reports/generated/.gitkeep
